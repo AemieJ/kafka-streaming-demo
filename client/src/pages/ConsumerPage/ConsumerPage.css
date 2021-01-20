@@ -1,0 +1,72 @@
+.ConsumerPage {
+    text-align: center;
+  }
+  
+  .ConsumerPage-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .ConsumerPage-within {
+      flex-basis: 10%;
+      margin-top: 3vh;
+  }
+  
+  .ConsumerPage-within button.ConsumerPage-btn {
+      margin: 1rem;
+  }
+  
+  .ConsumerPage-within button.ConsumerPage-btn:hover {
+      background-color: #fff;
+      color: rgb(255, 184, 118) !important;
+  }
+  
+  .ConsumerPage-header code {
+      margin-top: 3vh;
+  }
+  
+  .ConsumerPage-header .ConsumerPage-content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      flex-basis: 50%;
+      margin-top: 3rem;
+  }
+  
+  .ConsumerPage-content .message-box {
+      margin: 1rem;
+      border-radius: 25px;
+      text-align: center;
+      font-size: 22px;
+  }
+
+  .ConsumerPage-consumer1, .ConsumerPage-consumer2 {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column-reverse;
+      align-items: center;
+  }
+
+  .ConsumerPage-consumer1 code, .ConsumerPage-consumer2 code {
+      font-size: 19px;
+      margin-bottom: 1rem;
+  }
+
+  .ConsumerPage-consumer1 div.consumer1, .ConsumerPage-consumer2 div.consumer2 {
+    width: 675px;
+    height: 350px;
+    background: #fff;
+    border-radius: 25px;
+    text-align: center;
+    margin: 1rem;
+}
+
+.consumer1 code, .consumer2 code {
+    color: #000;
+    font-size: 15px;
+}

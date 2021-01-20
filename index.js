@@ -1,6 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const localstorage = require("localstorage-polyfill");
+
 const topic = require("./components/topic");
 const topicList = require("./components/list-topics");
 const producer = require("./components/producer");
@@ -35,6 +37,22 @@ app.post('/app/v1/post-producer-content/', async (req, res) => {
     const result = await producer(req.body.topic, req.body.content);
     res.json({
         topic: result
+    });
+});
+
+app.post('/app/v1/get-consumer', async(req, res) => {
+    console.log(req.body.topic);
+    const result = await consumer(req.body.topic);
+    res.json({
+        value: result
+    });
+});
+
+app.get('/app/v1/get-content', (req, res) => {
+    res.json({
+        partition0: localstorage.content0,
+        partition1: localstorage.content1,
+        topic: localstorage.topic
     });
 });
 

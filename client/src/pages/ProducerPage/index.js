@@ -77,7 +77,7 @@ class ProducerPage extends Component {
                         id="producer-submit"
                         onClick= { async () => {
                             const status = await postProducerContent(this.state.topic, this.state.textAreaValue);
-                            alert(status);
+                            //alert(status);
                         }}
                         >Send content
                         </button>

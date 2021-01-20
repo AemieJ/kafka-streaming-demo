@@ -16,5 +16,8 @@
     "express": "^4.17.1",
     "fetch": "^1.1.0",
     "kafkajs": "^1.15.0"
+  },
+  "devDependencies": {
+    "localstorage-polyfill": "^1.0.1"
   }
 }

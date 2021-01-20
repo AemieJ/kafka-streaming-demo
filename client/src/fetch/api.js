@@ -70,8 +70,54 @@ const postProducerContent = async(topic, content) => {
     }
 };
 
+const getConsumerContent = async(topic) => {
+    const config = {
+        method: 'post',
+        url: `${baseUrl}/app/v1/get-consumer/`,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify({
+            topic: topic
+        })
+    };
+    console.log(`Config for getting subscriber information from broker: ${JSON.stringify(config)}`);
+    try {
+        const res = await axios(config);
+        console.log(`Result for getting subscriber information from broker: ${JSON.stringify(res)}`);
+        return res.status;
+        
+    } catch (e) {
+        console.log(e);
+        return 500;
+    }
+};
+
+const getContent = async() => {
+    const config = {
+        method: 'get',
+        url: `${baseUrl}/app/v1/get-content/`,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+
+    console.log(`Config for getting content: ${JSON.stringify(config)}`);
+    try {
+        const res = await axios(config);
+        // console.log(`Result for getting content: ${JSON.stringify(res)}`);
+        return res.data;
+        
+    } catch (e) {
+        console.log(e);
+        return {};
+    }
+};
+
 module.exports = {
     createTopic,
     listTopic,
-    postProducerContent
+    postProducerContent,
+    getConsumerContent,
+    getContent
 };
