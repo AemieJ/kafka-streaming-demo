@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const topic = require("./components/topic");
+const topicList = require("./components/list-topics");
 const producer = require("./components/producer");
 const consumer = require("./components/consumer");
 
@@ -24,7 +25,17 @@ app.post('/app/v1/create-topic/', async (req, res) => {
 });
 
 app.get('/app/v1/get-topics/', async (req, res) => {
-    
+    const list = await topicList();
+    res.json({
+        listTopic: list
+    });
+});
+
+app.post('/app/v1/post-producer-content/', async (req, res) => {
+    const result = await producer(req.body.topic, req.body.content);
+    res.json({
+        topic: result
+    });
 });
 
 app.listen(port, () => {

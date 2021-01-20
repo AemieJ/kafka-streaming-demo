@@ -1,0 +1,46 @@
+.ProducerPage {
+  text-align: center;
+}
+
+.ProducerPage-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.ProducerPage-within {
+    flex-basis: 10%;
+    margin-top: 3vh;
+}
+
+.ProducerPage-within button.ProducerPage-btn {
+    margin: 1rem;
+}
+
+.ProducerPage-within button.ProducerPage-btn:hover {
+    background-color: #fff;
+    color: rgb(255, 184, 118) !important;
+}
+
+.ProducerPage-header code {
+    margin-top: 3vh;
+}
+
+.ProducerPage-header .ProducerPage-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+    margin-top: 3rem;
+}
+
+.ProducerPage-content .message-box {
+    margin: 1rem;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 22px;
+}

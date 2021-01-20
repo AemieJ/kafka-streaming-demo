@@ -1,7 +1,6 @@
 const {Kafka} = require("kafkajs");
-const user = process.argv[2];
 
-const producer = async (topicName) => {
+const producer = async (topicName, content) => {
     try {
         const kafka = new Kafka({
             clientId: "demo",
@@ -13,26 +12,27 @@ const producer = async (topicName) => {
         await producer.connect();
         console.log('Producer connected with kafka broker');
 
-        const partition = user[0].toUpperCase() < 'N' ? 0 : 1;
-        console.log(`Sending user ${user} on partition ${partition}`);
+        const partition = content[0].toUpperCase() < 'N' ? 0 : 1;
+        console.log(`Sending content ${content} on partition ${partition}`);
         const result = await producer.send({
             topic: topicName,
             messages: [
                 {
-                    value: user,
+                    value: content,
                     partition: partition
                 }
             ]
         });
-        console.log(`Sent to broker: ${JSON.stringify(result)}`);
-
+        console.log(`Sent content to broker: ${JSON.stringify(result)}`);
+        console.log(result[0].topicName);
         await producer.disconnect();
+        return result[0].topicName;
 
     } catch (e) {
         console.log(`Error produced: ${e}`);
-    } finally {
-        process.exit(0);
+        return '';
     }
 };
 
+// producer('toxicity', 'i hate life');
 module.exports = producer;

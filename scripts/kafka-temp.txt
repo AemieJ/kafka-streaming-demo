@@ -1,1 +1,0 @@
-f579cd0dfde6   confluentinc/cp-kafka             "/etc/confluent/dock…"    25 minutes ago   Exited (137) 10 minutes ago                            kafka
