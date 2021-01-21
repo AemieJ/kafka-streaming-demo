@@ -1,6 +1,6 @@
 # Apache Kafka Basic Level Setup & Understanding 
 
-In this project, the major setup to understand the flow of kafka is in `components` folder. However, it is much easier to understand the flow through a simple UI which showcase how the consumers stay subscribed to the particular topics in broker depending on this partition. 
+In this project, the major setup to understand the flow of kafka that can be found in the `components` folder. However, it is much easier to understand the flow through a simple UI which showcase how the consumers stay subscribed to the particular topics in broker depending on this partition. 
 
 However, the visualization in this code is only limited to 2 partitions for each topic within the broker but there certainly can be greater than 2 partition in real world applications. 
 
@@ -95,4 +95,4 @@ Now, we want to have a consumer that subscribes to one or more topic within the 
 
 Here, I have provided 2 consumers, if only 1 is subscribed then that consumer will be subscribed to both partitions of that topic however if both of them are subscribed then each consumer will be subscribed to the single partition of the topic thus exhibiting parallel processing.
 
-To understand, the ideal case of how Apach Kafka transmitts content, you can see the [demo](https://we.tl/t-xwBGVeo6jg) and perform the operations and try it by yourself. 
+To understand, the ideal case of how Apache Kafka stream processing works, you can see the [demo](https://we.tl/t-xwBGVeo6jg) and perform the operations and try it by yourself. 
