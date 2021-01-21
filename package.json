@@ -8,7 +8,7 @@
     "start": "node index.js",
     "lint": "eslint . --fix",
     "pretty": "prettier '**/*.js' --write",
-    "format": "npm run pretty && npm run lint"
+    "format": "npm run pretty"
   },
   "author": "AemieJ",
   "license": "ISC",

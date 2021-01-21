@@ -14,6 +14,7 @@ class ConsumerPage extends Component {
       btnStatus1: false,
       btnStatus2: false,
       choice: 1,
+      subscribedTopic: "",
     };
   }
 
@@ -21,19 +22,29 @@ class ConsumerPage extends Component {
     this.setState({ choice: Math.round(1 + Math.random()) });
     setInterval(async () => {
       const result = await getContent();
+      if (this.state.subscribedTopic !== "" && this.state.subscribedTopic !== result["topic"]) {
+        this.setState({ subscribedTopic: result["topic"] });
+      } else if (this.state.subscribedTopic === "") {
+        this.setState({ subscribedTopic: result["topic"] });
+      }
+
+      if (this.state.topic !== this.state.subscribedTopic) {
+        this.setState({ btnStatus1: false, btnStatus2: false });
+      }
+
       const content0 = result["partition0"];
       const content1 = result["partition1"];
       this.setTextContent(content0, content1);
-    }, 5000);
+    }, 1000);
     await this.getTopicList();
   }
 
   setTextContent = (content0, content1) => {
+    const consumerChoice = this.state.choice;
     if (this.state.btnStatus1 === true) {
       let text1, text2;
       if (this.state.btnStatus2 === true) {
         // consumer1 & consumer2 subscribed to the topic
-        const consumerChoice = this.state.choice;
         // consumerChoice result will hold content0 & other will hold content1
         text1 =
           consumerChoice === 1
@@ -45,9 +56,11 @@ class ConsumerPage extends Component {
             : `[Partition 0 content: ${content0}]`;
       } else {
         // consumer1 only subscribed to the topic
-        text1 = `[Partition 0 content: ${content0}]\n
-                [Partition 1 content: ${content1}]`;
-        text2 = "";
+        text1 = this.state.textAreaValue2 === '' ? `[Partition 0 content: ${content0}]\n
+                [Partition 1 content: ${content1}]` : consumerChoice === 1
+                ? `[Partition 0 content: ${content0}]`
+                : `[Partition 1 content: ${content1}]`;
+        text2 = this.state.textAreaValue2;
       }
       this.setState({
         textAreaValue1: text1,
@@ -57,13 +70,15 @@ class ConsumerPage extends Component {
       let text1, text2;
       if (this.state.btnStatus2 === true) {
         // consumer2 only subscribed to the topic
-        text1 = "";
-        text2 = `[Partition 0 content: ${content0}]\n
-                [Partition 1 content: ${content1}]`;
+        text1 = this.state.textAreaValue1;
+        text2 = this.state.textAreaValue1 === '' ? `[Partition 0 content: ${content0}]\n
+                [Partition 1 content: ${content1}]` : consumerChoice === 1
+                ? `[Partition 1 content: ${content1}]`
+                : `[Partition 0 content: ${content0}]`;
       } else {
         // none subscribed to the topic
-        text1 = "";
-        text2 = "";
+        text1 = this.state.textAreaValue1;
+        text2 = this.state.textAreaValue2;
       }
       this.setState({
         textAreaValue1: text1,
