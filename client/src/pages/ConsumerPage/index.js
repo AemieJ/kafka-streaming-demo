@@ -56,10 +56,13 @@ class ConsumerPage extends Component {
             : `[Partition 0 content: ${content0}]`;
       } else {
         // consumer1 only subscribed to the topic
-        text1 = this.state.textAreaValue2 === '' ? `[Partition 0 content: ${content0}]\n
-                [Partition 1 content: ${content1}]` : consumerChoice === 1
-                ? `[Partition 0 content: ${content0}]`
-                : `[Partition 1 content: ${content1}]`;
+        text1 =
+          this.state.textAreaValue2 === ""
+            ? `[Partition 0 content: ${content0}]\n
+                [Partition 1 content: ${content1}]`
+            : consumerChoice === 1
+            ? `[Partition 0 content: ${content0}]`
+            : `[Partition 1 content: ${content1}]`;
         text2 = this.state.textAreaValue2;
       }
       this.setState({
@@ -71,10 +74,13 @@ class ConsumerPage extends Component {
       if (this.state.btnStatus2 === true) {
         // consumer2 only subscribed to the topic
         text1 = this.state.textAreaValue1;
-        text2 = this.state.textAreaValue1 === '' ? `[Partition 0 content: ${content0}]\n
-                [Partition 1 content: ${content1}]` : consumerChoice === 1
-                ? `[Partition 1 content: ${content1}]`
-                : `[Partition 0 content: ${content0}]`;
+        text2 =
+          this.state.textAreaValue1 === ""
+            ? `[Partition 0 content: ${content0}]\n
+                [Partition 1 content: ${content1}]`
+            : consumerChoice === 1
+            ? `[Partition 1 content: ${content1}]`
+            : `[Partition 0 content: ${content0}]`;
       } else {
         // none subscribed to the topic
         text1 = this.state.textAreaValue1;
