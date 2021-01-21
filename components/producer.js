@@ -33,6 +33,5 @@ const producer = async (topicName, content) => {
   }
 };
 
-
 // producer(process.argv[2], process.argv[3]);
 module.exports = producer;
