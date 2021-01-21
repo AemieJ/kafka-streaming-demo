@@ -33,5 +33,6 @@ const producer = async (topicName, content) => {
   }
 };
 
-// producer('toxicity', 'i hate life');
+
+// producer(process.argv[2], process.argv[3]);
 module.exports = producer;

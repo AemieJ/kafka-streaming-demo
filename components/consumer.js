@@ -68,5 +68,5 @@ const consumer = async (topicName) => {
   }
 };
 
-// consumer('check');
+// consumer(process.argv[2]);
 module.exports = consumer;
